@@ -11,43 +11,31 @@ $(document).ready(function() {
 		}
 		stop() {
 			this._timerRunning = false;
-			this.clearTime();
 		}
 		reset() {
 			this._timerCurrentTime = 0;
-			this.clearTime();
 		}
-		clearTime(element) {
-			clearInterval(element)
+		clearTime(timerDisplayedTime) {
+			clearInterval(timerDisplayedTime)
 			//clearInterval(this.getDisplayedTime()); don`t work
-		}
-		getDisplayedTime() {
-			return setInterval(() => {
-				this._timerCurrentTime += this._interval;
-				this._timerElement.innerHTML = this.prepareDisplayedTime(this._timerCurrentTime);
-			}, this._interval)
 		}
 		prepareDisplayedTime(time) {
 			let milliSeconds = time % 1000,
 	        seconds = Math.floor((time / 1000) % 60) ,
 	        minutes = Math.floor((time / 1000 / 60) % 60);
 
-	        if (minutes < 10) {
-	            minutes = '0' + minutes;
-	        }
-	        if (seconds >= 60) {
-	            seconds = seconds % 60;
-	        }
-	        if (seconds < 10) {
-	            seconds = '0' + seconds;
-	            }
-	        if (milliSeconds < 10) {
-	             milliSeconds = '0' + milliSeconds;
-	        }
-	        if (milliSeconds > 99 ) {
-	           milliSeconds = milliSeconds / 10;
-	        }
-	    return minutes + ':' + seconds + ',' + milliSeconds; 
+	        (minutes < 10) ? minutes = `0${minutes}`: minutes;
+	        (seconds >= 60) ? seconds = seconds % 60 : seconds;
+	        (seconds < 10) ? seconds = `0${seconds}` : seconds;
+	        (milliSeconds < 10) ? milliSeconds = `0${milliSeconds}` : milliSeconds;
+	        (milliSeconds > 99) ? milliSeconds = milliSeconds / 10 : milliSeconds;
+	    return `${minutes}:${seconds},${milliSeconds}`; 
+		}
+		getDisplayedTime() {
+			return setInterval(() => {
+				this._timerCurrentTime += this._interval;
+				this._timerElement.innerHTML = this.prepareDisplayedTime(this._timerCurrentTime);
+			}, this._interval)
 		}
 	}
 
@@ -67,10 +55,10 @@ $(document).ready(function() {
 		timerElement: $displayTimeLap,
 		timerInterval: 10
 	});
-	let currentLapNumber = 0;
+	let currentLapNumber = 0,
+		timeGeneral = 0,
+		timeSecondary = 0;
 
-	var timeGeneral, timeSecondary;
-	
 	let startTimer = () => {
 		timer.start();
 		timerLap.start();
@@ -97,13 +85,12 @@ $(document).ready(function() {
 		timerLap.reset();
 	}
 	let saveLap = () => {
-		if (currentLapNumber < 15) {
-			currentLapNumber++;
-			$('.lap-results').append('<div class="resultLine">' +
-									  '<span class="currentLap">' + "Круг" + " " + currentLapNumber + " " + '</span>'  +
-									  '<span class="currentTime">' + $displayTimeLap.textContent + " " + '</span>' +
-									'</div>');
-		} else false;
+		currentLapNumber++;
+		$('.lap-results').append('<div class="resultLine">' +
+								  '<span class="currentLap">' + "Круг" + " " + currentLapNumber + " " + '</span>'  +
+								  '<span class="currentTime">' + $displayTimeLap.textContent + " " + '</span>' +
+								'</div>');
+		
 		timerLap.reset();
 	}
 	

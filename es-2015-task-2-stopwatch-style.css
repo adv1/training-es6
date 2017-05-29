@@ -4,7 +4,7 @@
 	flex-direction: column;
 	margin-top: 100px;
 }
-#time-label {
+.time-label {
 	margin: auto;
 	display: flex;
 	flex-direction: column;
@@ -18,24 +18,35 @@
 }
 .control-buttons-and-lap-results {
 	align-self: center;
-	width: 400px;
+	width: 350px;
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
+	background-color: lightgray;
+	text-align: center;
 }
-#control-buttons {
-	align-self: center;
+.control-buttons {
+	margin-top: 5px;
 }
-#start-btn { color: green }
+#start-btn { color: green; }
+#reset-btn { margin-right: 70px }
+.btn.btn-default {
+	width: 60px;
+	height: 55px;
+	border-radius: 50px;
+	border: 2px solid white;
+	line-height: 40px;
+}
 .lap-results {
 	align-self: center;
 	margin-top: 10px;
 	width: 300px;
 }
 .resultLine {
-	margin: auto;
-
+	border-bottom: 2px solid #C0C0C0;
+	margin-bottom: 10px;
 }
-
-.currentLap { color: gray; border-bottom: 2px solid #C0C0C0; margin: 2px 100px 5px 0;}
-.currentTime { margin-left: 50px; border-bottom: 2px solid #C0C0C0; }
+.currentLap { 
+	color: gray; 
+	margin: 2px 100px 5px 0;
+}
