@@ -86,10 +86,10 @@ $(document).ready(function() {
 	}
 	let saveLap = () => {
 		currentLapNumber++;
-		$('.lap-results').append('<div class="resultLine">' +
-								  '<span class="currentLap">' + "Круг" + " " + currentLapNumber + " " + '</span>'  +
-								  '<span class="currentTime">' + $displayTimeLap.textContent + " " + '</span>' +
-								'</div>');
+		$('.lap-results').append(`<div class="resultLine">
+								  <span class="currentLap"> Круг ${currentLapNumber} </span>
+								  <span class="currentTime"> ${$displayTimeLap.textContent} </span>
+								</div>`);
 		
 		timerLap.reset();
 	}
