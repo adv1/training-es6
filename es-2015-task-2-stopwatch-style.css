@@ -28,7 +28,7 @@
 .control-buttons {
 	margin-top: 5px;
 }
-#start-btn { color: green; }
+#start-btn { color: green }
 #reset-btn { margin-right: 70px }
 .btn.btn-default {
 	width: 60px;
