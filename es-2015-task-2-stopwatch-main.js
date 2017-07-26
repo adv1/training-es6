@@ -17,7 +17,6 @@ $(document).ready(function() {
 		}
 		clearTime(timerDisplayedTime) {
 			clearInterval(timerDisplayedTime)
-			//clearInterval(this.getDisplayedTime()); don`t work
 		}
 		prepareDisplayedTime(time) {
 			let milliSeconds = time % 1000,
