@@ -40,8 +40,6 @@ $(document).ready(function() {
 
 	class TimerSecond extends Timer {}
 	
-
-
 	let $displayTimeGeneral = $('#time-general')[0];
 	let $displayTimeLap = $('#time-lap')[0];
 
